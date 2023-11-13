@@ -25,8 +25,11 @@
 <%@include file="../component/allcss.jsp"%>
 </head>
 <body>
+
+	<%@include file="navbar.jsp"%>
+	
 	<%
-		Object doctObj = session.getAttribute("doctObj");
+		//Object doctObj = session.getAttribute("doctObj");
 		if (doctObj == null) {
 			response.sendRedirect("../doctor_login.jsp");
 		}
@@ -37,12 +40,6 @@
 		AppointmentDAO dao = new AppointmentDAO(DBConnect.getConn());
 		Appointment ap = dao.getAppointmentById(id);
 	%>
-
-	<nav class="navbar navbar-expand-lg navbar-dark bg-success">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="index.jsp"><i class="fas fa-clinic-medical"></i> MEDI HOME</a>
-		</div>
-	</nav>
 
 	<div class="container-fulid backImg p-5">
 		<p class="text-center fs-2 text-white"></p>

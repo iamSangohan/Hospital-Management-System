@@ -38,21 +38,58 @@
                 <div class="card paint-card">
                     <div class="card-body">
                         <p class="text-center fs-3">User Appointment</p>
-                        <% if (request.getAttribute("errorMsg") != null && !request.getAttribute("errorMsg").toString().isEmpty()) { %>
-                            <p class="fs-4 text-center text-danger"><%= request.getAttribute("errorMsg") %></p>
-                            <% request.removeAttribute("errorMsg"); %>
-                        <% } %>
-                        <% if (request.getAttribute("succMsg") != null && !request.getAttribute("succMsg").toString().isEmpty()) { %>
-                            <p class="fs-4 text-center text-success"><%= request.getAttribute("succMsg") %></p>
+                        
+                        <% if (request.getAttribute("succMsg") != null) { %>
+                            <p class="text-center text-success fs-3"><%= request.getAttribute("succMsg") %></p>
                             <% request.removeAttribute("succMsg"); %>
                         <% } %>
+
+                        <% if (request.getAttribute("errorMsg") != null) { %>
+                            <p class="text-center text-danger fs-5"><%= request.getAttribute("errorMsg") %></p>
+                            <% request.removeAttribute("errorMsg"); %>
+                        <% } %>
+                        
                         <form class="row g-3" action="appAppointment" method="post">
                             <input type="hidden" name="userid" value="<%= session.getAttribute("userObj") != null ? ((com.entity.User) session.getAttribute("userObj")).getId() : "" %>">
                             <div class="col-md-6">
                                 <label for="inputEmail4" class="form-label">Full Name</label>
                                 <input required type="text" class="form-control" name="fullname">
                             </div>
-                            <!-- Autres champs -->
+							<div class="col-md-6">
+								<label>Gender</label> <select class="form-control" name="gender"
+									required>
+									<option value="male">Male</option>
+									<option value="female">Female</option>
+								</select>
+							</div>
+
+							<div class="col-md-6">
+								<label for="inputEmail4" class="form-label">Age</label> <input
+									required type="number" class="form-control" name="age">
+							</div>
+
+							<div class="col-md-6">
+								<label for="inputEmail4" class="form-label">Appointment
+									Date</label> <input type="date" class="form-control" required
+									name="appoint_date">
+							</div>
+
+							<div class="col-md-6">
+								<label for="inputEmail4" class="form-label">Email</label> <input
+									required type="email" class="form-control" name="email">
+							</div>
+
+							<div class="col-md-6">
+								<label for="inputEmail4" class="form-label">Phone No</label> <input
+									maxlength="10" required type="number" class="form-control"
+									name="phno">
+							</div>
+
+
+							<div class="col-md-6">
+								<label for="inputEmail4" class="form-label">Diseases</label> <input
+									required type="text" class="form-control" name="diseases">
+							</div>
                             <div class="col-md-6">
                                 <label for="inputPassword4" class="form-label">Doctor</label>
                                 <select required class="form-control" name="doct">

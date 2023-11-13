@@ -38,6 +38,7 @@
 								<th scope="col">Doctor Name</th>
 								<th scope="col">Address</th>
 								<th scope="col">Status</th>
+								<th scope="col">Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -59,6 +60,14 @@
 								<td><%=d.getFullName()%></td>
 								<td><%=ap.getAddress()%></td>
 								<td><%=ap.getStatus()%></td>
+								<td>
+									<% if ("Pending".equals(ap.getStatus())) { %> 
+											<a href="comment.jsp?id=<%=ap.getId()%>"
+											class="btn btn-success btn-sm">Comment</a>
+									<% } else { %> 
+											<a href="#" class="btn btn-success btn-sm disabled">Comment</a> 
+									<% } %>
+									</td>
 							</tr>
 							<%
 							}
